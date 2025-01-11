@@ -1,3 +1,10 @@
-console.log(typeof 5);
-console.log(typeof true);
-console.log(typeof "hehe");
+console.log("Number:", typeof 5);            
+console.log("BigInt:", typeof 123n);         
+console.log("String:", typeof "hehe");      
+console.log("Boolean:", typeof true);        
+console.log("Undefined:", typeof undefined); 
+console.log("Null:", typeof null);           
+console.log("Symbol:", typeof Symbol("id")); 
+console.log("Object:", typeof { a: 1 });     
+console.log("Array:", typeof [1, 2, 3]);     
+console.log("Function:", typeof function(){}); 

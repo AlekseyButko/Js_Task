@@ -1,3 +1,3 @@
-const num = 123456;
-let result = String(num).split('').map(Number);
+const number = 123456;
+const result = number.toString().split('').join(' ');
 console.log(result);
