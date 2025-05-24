@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Віджет погоди</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="weather-widget">
+    <div id="date-time"></div>
+    <h2 id="location">Місто</h2>
+    <img id="icon" src="" alt="Погода">
+    <p><strong id="description">Опис</strong></p>
+    <p>Температура: <span id="temp"></span>°C</p>
+    <p>Відчувається як: <span id="feels_like"></span>°C</p>
+    <p>Вологість: <span id="humidity"></span>%</p>
+    <p>Тиск: <span id="pressure"></span> hPa</p>
+    <p>Вітер: <span id="wind"></span> км/год</p>
+    <button onclick="fetchWeather()">Оновити</button>
+  </div>
+
+  
+</body>
+</html>
