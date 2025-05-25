@@ -1,31 +1,36 @@
-function createMultiplicationTable() {
-    let table = document.createElement("table"); 
-    table.style.borderCollapse = "collapse"; 
-    table.style.textAlign = "center";
+const container = document.getElementById("table-container");
 
-    for (let i = 0; i <= 10; i++) {
-        let row = document.createElement("tr"); 
+const table = document.createElement("table");
 
-        for (let j = 0; j <= 10; j++) {
-            let cell = document.createElement(i === 0 || j === 0 ? "th" : "td"); 
-            cell.style.border = "1px solid black"; 
-            cell.style.padding = "5px"; 
-            if (i === 0 && j === 0) {
-                cell.textContent = "×"; 
-            } else if (i === 0) {
-                cell.textContent = j; 
-            } else if (j === 0) {
-                cell.textContent = i; 
-            } else {
-                cell.textContent = i * j; 
-            }
+// Створюємо заголовок таблиці
+const headerRow = document.createElement("tr");
+const emptyCell = document.createElement("th");
+headerRow.appendChild(emptyCell);
 
-            row.appendChild(cell); 
-        }
+for (let i = 1; i <= 10; i++) {
+  const th = document.createElement("th");
+  th.textContent = i;
+  headerRow.appendChild(th);
+}
+table.appendChild(headerRow);
 
-        table.appendChild(row); 
-    }
 
-    document.body.appendChild(table); 
+for (let i = 1; i <= 10; i++) {
+  const row = document.createElement("tr");
 
-createMultiplicationTable();
+  
+  const th = document.createElement("th");
+  th.textContent = i;
+  row.appendChild(th);
+
+ 
+  for (let j = 1; j <= 10; j++) {
+    const td = document.createElement("td");
+    td.textContent = i * j;
+    row.appendChild(td);
+  }
+
+  table.appendChild(row);
+}
+
+container.appendChild(table);
