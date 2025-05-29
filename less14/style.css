@@ -1,0 +1,151 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider {
+  position: relative;
+  width: 800px;
+  max-width: 95%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background: #fff;
+}
+
+
+.slide-container {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+
+.slide img {
+  width: 40%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+
+.slide-content {
+  flex: 1;
+}
+
+.slide-content h2 {
+  font-size: 14px;
+  color: #0a83d8;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.slide-content p {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #222;
+  margin: 0 0 12px;
+  font-weight: 400;
+}
+
+.slide-content p strong {
+  font-weight: 700;
+  font-size: 18px;
+  display: block;
+  margin-top: 10px;
+  color: #111;
+}
+
+.slide-content span {
+  color: #999;
+  font-size: 14px;
+}
+
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  font-size: 26px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  color: #333;
+  transition: background 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #eaeaea;
+}
+
+#prevBtn {
+  left: 10px;
+}
+
+#nextBtn {
+  right: 10px;
+}
+
+.nav-btn:disabled {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+
+.dots {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: #2196f3;
+}
+
+
+@media (max-width: 600px) {
+  .slide {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .slide img {
+    width: 80%;
+  }
+
+  .slide-content p {
+    font-size: 18px;
+  }
+}

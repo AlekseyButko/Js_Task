@@ -1,17 +1,28 @@
-let number = prompt("Введіть тризначне число:");
+function checkNumber() {
+  const input = prompt("Введіть тризначне число:");
 
-let digit1 = number[0]; 
-let digit2 = number[1]; 
-let digit3 = number[2]; 
+  
+  if (!input || input.length !== 3 || isNaN(input)) {
+    alert("Некоректне число. Введіть саме тризначне число.");
+    return;
+  }
 
-if (digit1 === digit2 && digit2 === digit3) {
-  alert("Всі цифри однакові.");
-} else {
-  alert("Не всі цифри однакові.");
+  
+  const digits = input.split("").map(Number);
+
+  const [a, b, c] = digits;
+
+ 
+  const allSame = a === b && b === c;
+  const hasSame = a === b || b === c || a === c;
+
+  if (allSame) {
+    alert("Усі цифри однакові.");
+  } else if (hasSame) {
+    alert("Серед цифр є однакові.");
+  } else {
+    alert("Усі цифри різні.");
+  }
 }
 
-if (digit1 === digit2 || digit2 === digit3 || digit1 === digit3) {
-  alert("Є однакові цифри.");
-} else {
-  alert("Немає однакових цифр.");
-}
+checkNumber();

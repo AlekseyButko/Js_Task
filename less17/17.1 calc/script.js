@@ -1,24 +1,49 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const display = document.getElementById("display");
+class Calculator {
+  add(a, b) {
+    return a + b;
+  }
 
-    function appendToDisplay(value) {
-        display.value += value; // Додає число або оператор у поле вводу
-    }
+  subtract(a, b) {
+    return a - b;
+  }
 
-    function clearDisplay() {
-        display.value = ""; // Очищає поле вводу
-    }
+  multiply(a, b) {
+    return a * b;
+  }
 
-    function calculateResult() {
-        try {
-            display.value = eval(display.value); // Виконує математичні операції
-        } catch {
-            display.value = "Помилка"; // Якщо помилка, показує "Помилка"
-        }
-    }
+  divide(a, b) {
+    if (b === 0) return "Помилка: ділення на нуль";
+    return a / b;
+  }
+}
 
-    // Робимо функції доступними глобально
-    window.appendToDisplay = appendToDisplay;
-    window.clearDisplay = clearDisplay;
-    window.calculateResult = calculateResult;
-});
+const calc = new Calculator();
+
+function calculate(operation) {
+  const a = parseFloat(document.getElementById("num1").value);
+  const b = parseFloat(document.getElementById("num2").value);
+  const resultDiv = document.getElementById("result");
+
+  if (isNaN(a) || isNaN(b)) {
+    resultDiv.textContent = "Будь ласка, введіть обидва числа.";
+    return;
+  }
+
+  let result;
+  switch (operation) {
+    case "add":
+      result = calc.add(a, b);
+      break;
+    case "subtract":
+      result = calc.subtract(a, b);
+      break;
+    case "multiply":
+      result = calc.multiply(a, b);
+      break;
+    case "divide":
+      result = calc.divide(a, b);
+      break;
+  }
+
+  resultDiv.textContent = `Результат: ${result}`;
+}

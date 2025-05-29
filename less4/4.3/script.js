@@ -1,38 +1,58 @@
-let birthYear = prompt("Enter your birth year: ");
-let city = prompt("Enter your city: ");
-let favSport = prompt("Enter your favourite sport: ");
+const currentYear = new Date().getFullYear();
+
+// Запитуємо дані
+let birthYear = prompt("Введіть рік народження:");
+let city = prompt("В якому місті ви живете?");
+let sport = prompt("Ваш улюблений вид спорту?");
+
+// Повідомлення для виводу
+let message = "";
+
 
 if (!birthYear) {
-    alert("Unfortunately, you didn't write your birth year...");
-} else if (!city) {
-    alert("Unfortunately, you didn't write your city...");
-} else if (!favSport) {
-    alert("Unfortunately, you didn't write your favourite sport...");
+  message += "Шкода, що Ви не захотіли ввести свій рік народження.\n";
 } else {
-    let currentYear = new Date().getFullYear();
+  birthYear = Number(birthYear);
+  if (isNaN(birthYear) || birthYear > currentYear || birthYear < 1900) {
+    message += "Ви ввели некоректний рік народження.\n";
+  } else {
     let age = currentYear - birthYear;
-
-    let cityMessage;
-    if (city === "Kyiv") {
-        cityMessage = "You live in the capital of Ukraine";
-    } else if (city === "Washington") {
-        cityMessage = "You live in the capital of the USA";
-    } else if (city === "London") {
-        cityMessage = "You live in the capital of Great Britain";
-    } else {
-        cityMessage = `You live in ${city}`;
-    }
-
-    let sportMessage;
-    if (favSport === "Basketball") {
-        sportMessage = "You like basketball, do you wanna be like Michael Jordan?";
-    } else if (favSport === "Football") {
-        sportMessage = "You like football, do you wanna be like Ronaldo?";
-    } else if (favSport === "Tennis") {
-        sportMessage = "You like tennis, do you wanna be like Federer?";
-    } else {
-        sportMessage = `Interesting choice of ${favSport}`;
-    }
-
-    alert(`You are ${age},\n${cityMessage}\n${sportMessage}`);
+    message += `Ваш вік: ${age} років.\n`;
+  }
 }
+
+if (!city) {
+  message += "Шкода, що Ви не захотіли ввести своє місто.\n";
+} else {
+  const capitals = {
+    "київ": "України",
+    "лондон": "Великої Британії",
+    "вашингтон": "США"
+  };
+  const cityLower = city.trim().toLowerCase();
+  if (capitals[cityLower]) {
+    message += `Ти живеш у столиці ${capitals[cityLower]}.\n`;
+  } else {
+    message += `Ти живеш у місті ${city}.\n`;
+  }
+}
+
+
+if (!sport) {
+  message += "Шкода, що Ви не захотіли ввести улюблений вид спорту.\n";
+} else {
+  const champions = {
+    "футбол": "Ліонель Мессі",
+    "бокс": "Олександр Усик",
+    "теніс": "Новак Джокович"
+  };
+  const sportLower = sport.trim().toLowerCase();
+  if (champions[sportLower]) {
+    message += `Круто! Хочеш стати як ${champions[sportLower]}?`;
+  } else {
+    message += `Ваш улюблений спорт: ${sport}.`;
+  }
+}
+
+
+alert(message);

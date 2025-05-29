@@ -1,18 +1,19 @@
-function askNumber(){
-    let number; 
-    let attempts = 10;
-    for(let i = 0; i < attempts; i++){
-        number =prompt("Введіть число більше 100:");
-        if(number === null){
-            console.log("Ввід скасовано користувачем.");
-            return;
-        }
-        number = Number(number);
-        if(number>100){
-            console.log("Останнє введене число:", number);
-            return;
-        }
+function askNumber() {
+  let lastInput;
+  
+  for (let i = 0; i < 10; i++) {
+    const input = prompt("Введіть число більше 100:");
+    lastInput = input;
+
+    const number = Number(input);
+
+    
+    if (isNaN(number) || number > 100) {
+      break;
     }
-    console.log("Досягнуто 10 ітерацій. Останнє введене число:", number);
+  }
+
+  console.log("Останнє введене значення:", lastInput);
 }
+
 askNumber();
